@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lmw.dao.SouHuMapper" >
+	<resultMap id="BaseResultMap" type="com.lmw.domain.SouHu" >
+		<result column="id"  property="id"  /> <!--主键 -->
+		<result column="authorId"  property="authorId"  /> <!--文章ID -->
+		<result column="froms"  property="authorName"  /> <!--来源 -->
+		<result column="img"  property="focus"  /> <!--图片链接 -->
+		<result column="title"  property="title"  /> <!--标题 -->
+		<result column="date"  property="date"  /> <!--时间 -->
+		<result column="url"  property="url"  /> <!--文章url -->
+		<result column="body"  property="body"  /> <!--文章内容 -->
+		<result column="flag"  property="flag"  /> <!--标识 -->
+	</resultMap>
+  
+  <select id="selectAllSouHu" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select *
+    from souhu_zixun
+    where flag = 0
+    <if test="null != id and '' != id">
+    	and id = #{id}
+    </if>
+  </select>
+  
+  <select id="selectByPrimaryKey" resultType="java.lang.Integer" parameterType="java.lang.Integer" >
+    select count(1)    
+    from souhu_zixun
+    where id = #{id}
+  </select>
+  
+  <insert id="insert" parameterType="com.lmw.domain.SouHu" >
+    insert into souhu_zixun (id,authorId,froms,img,title,date,url)
+    values (#{id},#{authorId},#{authorName},#{focus},#{title},#{date},#{url})
+  </insert>
+  <update id="updateBody" parameterType="com.lmw.domain.SouHu">
+  	update souhu_zixun set body = #{body} ,flag = 1 
+  	where url = #{url}
+  </update>
+</mapper>

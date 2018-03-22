@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="pageProcessor-project:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="mw-project.war">
+      <element id="artifact" artifact-name="pageProcessor-project:war exploded" />
+    </root>
+  </artifact>
+</component>

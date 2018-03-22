@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lmw.dao.GaokaoMapper" >
+  <resultMap id="BaseResultMap" type="com.lmw.domain.Gaokao" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="zhuanyemingcheng" property="zhuanyemingcheng" jdbcType="VARCHAR" />
+    <result column="gaoxiaomingcheng" property="gaoxiaomingcheng" jdbcType="VARCHAR" />
+    <result column="pingjunfen" property="pingjunfen" jdbcType="VARCHAR" />
+    <result column="zuigaofen" property="zuigaofen" jdbcType="VARCHAR" />
+    <result column="kaoshengdiqu" property="kaoshengdiqu" jdbcType="VARCHAR" />
+    <result column="kebie" property="kebie" jdbcType="VARCHAR" />
+    <result column="nianfen" property="nianfen" jdbcType="VARCHAR" />
+    <result column="pici" property="pici" jdbcType="VARCHAR" />
+    <result column="zhuanyeduibi" property="zhuanyeduibi" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, zhuanyemingcheng, gaoxiaomingcheng, pingjunfen, zuigaofen, kaoshengdiqu, kebie, 
+    nianfen, pici, zhuanyeduibi
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from gaokao
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from gaokao
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lmw.domain.Gaokao" >
+    insert into gaokao (id, zhuanyemingcheng, gaoxiaomingcheng, 
+      pingjunfen, zuigaofen, kaoshengdiqu, 
+      kebie, nianfen, pici, 
+      zhuanyeduibi)
+    values (#{id,jdbcType=INTEGER}, #{zhuanyemingcheng,jdbcType=VARCHAR}, #{gaoxiaomingcheng,jdbcType=VARCHAR}, 
+      #{pingjunfen,jdbcType=VARCHAR}, #{zuigaofen,jdbcType=VARCHAR}, #{kaoshengdiqu,jdbcType=VARCHAR}, 
+      #{kebie,jdbcType=VARCHAR}, #{nianfen,jdbcType=VARCHAR}, #{pici,jdbcType=VARCHAR}, 
+      #{zhuanyeduibi,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lmw.domain.Gaokao" >
+    insert into gaokao
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="zhuanyemingcheng != null" >
+        zhuanyemingcheng,
+      </if>
+      <if test="gaoxiaomingcheng != null" >
+        gaoxiaomingcheng,
+      </if>
+      <if test="pingjunfen != null" >
+        pingjunfen,
+      </if>
+      <if test="zuigaofen != null" >
+        zuigaofen,
+      </if>
+      <if test="kaoshengdiqu != null" >
+        kaoshengdiqu,
+      </if>
+      <if test="kebie != null" >
+        kebie,
+      </if>
+      <if test="nianfen != null" >
+        nianfen,
+      </if>
+      <if test="pici != null" >
+        pici,
+      </if>
+      <if test="zhuanyeduibi != null" >
+        zhuanyeduibi,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="zhuanyemingcheng != null" >
+        #{zhuanyemingcheng,jdbcType=VARCHAR},
+      </if>
+      <if test="gaoxiaomingcheng != null" >
+        #{gaoxiaomingcheng,jdbcType=VARCHAR},
+      </if>
+      <if test="pingjunfen != null" >
+        #{pingjunfen,jdbcType=VARCHAR},
+      </if>
+      <if test="zuigaofen != null" >
+        #{zuigaofen,jdbcType=VARCHAR},
+      </if>
+      <if test="kaoshengdiqu != null" >
+        #{kaoshengdiqu,jdbcType=VARCHAR},
+      </if>
+      <if test="kebie != null" >
+        #{kebie,jdbcType=VARCHAR},
+      </if>
+      <if test="nianfen != null" >
+        #{nianfen,jdbcType=VARCHAR},
+      </if>
+      <if test="pici != null" >
+        #{pici,jdbcType=VARCHAR},
+      </if>
+      <if test="zhuanyeduibi != null" >
+        #{zhuanyeduibi,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lmw.domain.Gaokao" >
+    update gaokao
+    <set >
+      <if test="zhuanyemingcheng != null" >
+        zhuanyemingcheng = #{zhuanyemingcheng,jdbcType=VARCHAR},
+      </if>
+      <if test="gaoxiaomingcheng != null" >
+        gaoxiaomingcheng = #{gaoxiaomingcheng,jdbcType=VARCHAR},
+      </if>
+      <if test="pingjunfen != null" >
+        pingjunfen = #{pingjunfen,jdbcType=VARCHAR},
+      </if>
+      <if test="zuigaofen != null" >
+        zuigaofen = #{zuigaofen,jdbcType=VARCHAR},
+      </if>
+      <if test="kaoshengdiqu != null" >
+        kaoshengdiqu = #{kaoshengdiqu,jdbcType=VARCHAR},
+      </if>
+      <if test="kebie != null" >
+        kebie = #{kebie,jdbcType=VARCHAR},
+      </if>
+      <if test="nianfen != null" >
+        nianfen = #{nianfen,jdbcType=VARCHAR},
+      </if>
+      <if test="pici != null" >
+        pici = #{pici,jdbcType=VARCHAR},
+      </if>
+      <if test="zhuanyeduibi != null" >
+        zhuanyeduibi = #{zhuanyeduibi,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lmw.domain.Gaokao" >
+    update gaokao
+    set zhuanyemingcheng = #{zhuanyemingcheng,jdbcType=VARCHAR},
+      gaoxiaomingcheng = #{gaoxiaomingcheng,jdbcType=VARCHAR},
+      pingjunfen = #{pingjunfen,jdbcType=VARCHAR},
+      zuigaofen = #{zuigaofen,jdbcType=VARCHAR},
+      kaoshengdiqu = #{kaoshengdiqu,jdbcType=VARCHAR},
+      kebie = #{kebie,jdbcType=VARCHAR},
+      nianfen = #{nianfen,jdbcType=VARCHAR},
+      pici = #{pici,jdbcType=VARCHAR},
+      zhuanyeduibi = #{zhuanyeduibi,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
